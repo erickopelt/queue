@@ -11,8 +11,8 @@
     </div>
     <ul class="queue">
       <transition-group
-        enter-active-class="fadeInLeft"
-        leave-active-class="fadeOutRight"
+        enter-active-class="fadeInRight"
+        leave-active-class="fadeOutLeft"
         tag="ul">
         <li v-for="item in queue" v-bind:key="item.id" class="queue-item">
           <span class="item-number">{{item.value}}</span>
@@ -33,13 +33,13 @@ export default {
   },
   methods: {
     enqueue: function (value) {
-      return this.queue.unshift({
+      return this.queue.push({
         value: value,
         id: Math.random()
       })
     },
     dequeue: function () {
-      return this.queue.pop()
+      return this.queue.shift()
     }
   }
 }
